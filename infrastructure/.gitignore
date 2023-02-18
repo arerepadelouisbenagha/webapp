@@ -36,4 +36,4 @@ override.tf.json
 terraform.rc
 
 # ssh Keys
-*demoserver*
+**webapp-key**
