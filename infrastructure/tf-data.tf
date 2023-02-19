@@ -17,11 +17,26 @@ data "aws_ami" "ubuntu" {
 data "cloudinit_config" "web_app" {
   gzip          = true
   base64_encode = true
-
   part {
     content_type = "text/x-shellscript"
     filename     = "web_app"
-    content      = templatefile("templates/web_app.tpl", {})
+    content = templatefile("templates/webapp.tpl",
+      {
+        Repository  = var.Repository
+        db_password = var.db_password
+        connection  = var.connection
+        username    = var.username
+    })
+  }
+
+  part {
+    content_type = "text/x-shellscript"
+    filename     = "db"
+    content = templatefile("../app/src/com/shashi/utility/database.properties",
+      {
+        db_password = var.db_password
+        username    = var.username
+    })
   }
 }
 
