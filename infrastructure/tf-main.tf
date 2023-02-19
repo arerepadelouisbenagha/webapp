@@ -1,5 +1,5 @@
 resource "aws_launch_configuration" "configuration" {
-  name             = "shopping-app"
+  name             = "webapp"
   image_id         = coalesce(data.aws_ami.ubuntu.id, var.ami)
   instance_type    = "t2.micro"
   key_name         = aws_key_pair.key.key_name
@@ -65,8 +65,8 @@ resource "aws_elb" "elb" {
 }
 
 resource "aws_key_pair" "key" {
-  key_name   = "deployer-key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKt0hxXULnMnAmKK9n68l+WsfezeJH4CKGTEMuaobSml/z1RiRbJ7d8pU24iJrp2mRE7fA70BOa8DEwpQjt6fKKIEOWwxoeLxZvYhS8ilP8S4arpo/C2sJgIFkEtx0hEV2lLUXzPPbPPcGtHBdI7mxmJvwckITWtqnwYZtOFNf80x0aV87tGUaM95vg8vdUsPCoXk/i5hwAbBqneI47RLNRyFTHSEjY8PIJO6xM5t8Co/RtkUt94IQPXBx2/UitLlTFKilWy2nvH6ZnoTxDB8V0GqhA5X2AdmDQvA3k78CNy2iKb2fQbwQVFXcRXyL1Ps20F9nJJZ/feJE1nE8whUV8aHGMSKfqC1LUF3qgmym+RHwhxZu0v9uSK84UJmGEOcKBV6U9FhbfdbgcwOIsvr8uJpCXT4ZD7HJ0kR5on4lkexjV/ApNwzVgVFM3AgV3rlN523XL1ZEyraPirOtScojFTQVPRL/i1+BQSpyjW4BzGuG6bNQLIqkpHGYPDttIq8= lbena@LAPTOP-QB0DU4OG"
+  key_name   = "webkey"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDL0I/GAzvNcexFJRoVuDudqIcfUKfn7Asdat40C/1zcI7Y+98SmBSihjVeI//X3F2RGlOwVCsyBy1CeW9+aPIOHde41xoVYWV0dTFFpOQyUthOqE8peD904tyT7D2VP4xzyv5IBvl5zeOklx6BvdJBoxAXv63oWh4AVGE45k8gDsyz1Jln/7lG8jdoaDnNRqjUssnRkt1UC8KLQkzVQEnp0P7BJfxrFwUXnddi8u45M+37yCXiYRPV5lcN05smEiIW4lR0qFy5aivLxVnGjQ1k7G5sXXeLSmgapQQCxEHVRiVNK2ZRNmwaUpK+/KYkRg9W5yBtK/KVBfJeBjia4pUgn2W68N2OYXso4GKjuUzYcGAq8Hck/21hMxUWMdlxQdmOiQieb4zwqLEFG34rHZcFgWIys6sE3P5AfgZtMayqPl3qxKCUgg4/eiTlXYHIHnq42+BU/CGpbG6qNwzXjzMmfZj6iVMiJk/TITTwVakRfAJuMDAoYaFNQoNZhrCKeD8= lbena@LAPTOP-QB0DU4OG"
 }
 
 resource "aws_security_group" "sg" {
