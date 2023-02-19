@@ -20,7 +20,7 @@ data "cloudinit_config" "web_app" {
   part {
     content_type = "text/x-shellscript"
     filename     = "web_app"
-    content = templatefile("templates/webapp.tpl",
+    content = templatefile("../templates/webapp.tpl",
       {
         Repository  = var.Repository
         db_password = var.db_password
