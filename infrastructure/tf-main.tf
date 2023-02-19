@@ -252,7 +252,7 @@ resource "aws_acm_certificate" "certificate" {
   validation_method = "DNS"
 }
 
-resource "aws_acm_certificate_validation" "jenkinscert" {
+resource "aws_acm_certificate_validation" "cert_validate" {
   certificate_arn         = aws_acm_certificate.certificate.arn
   validation_record_fqdns = [for record in aws_route53_record.record : record.fqdn]
 }
